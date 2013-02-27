@@ -25,6 +25,7 @@ var authClient = new FirebaseAuthClient(mainRef, function(error, user) {
 	} else {
 		indicleSync.toggleForm(true);
 		console.log ("User is logged out.");
+		top.postMessage({type: "INDICLE_SYNC_LOGOUT"}, "*");
 	}
 });
 
