@@ -1,3 +1,3 @@
-LinkSync
+IndicleSync
 ========
-A simple way to send a link to your mobile device.
+A simple way to share links amongst several devices.
