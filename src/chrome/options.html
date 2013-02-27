@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+		<title>IndicleSync - Options</title>
+		<link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<style type="text/css">
+			body {
+				padding-top: 40px;
+				padding-bottom: 40px;
+				background-color: #f5f5f5;
+			}
+
+			.form {
+				max-width: 300px;
+				padding: 19px 29px 29px;
+				margin: 0 15px; 20px;
+				height: 100%;
+				background-color: #fff;
+				border: 1px solid #e5e5e5;
+				-webkit-border-radius: 5px;
+				   -moz-border-radius: 5px;
+						border-radius: 5px;
+				-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+				   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+						box-shadow: 0 1px 2px rgba(0,0,0,.05);
+			}
+			.form .form-heading,
+			.form .checkbox {
+				margin-bottom: 10px;
+			}
+			.form input[type="text"],
+			.form input[type="password"] {
+				font-size: 16px;
+				height: auto;
+				margin-bottom: 15px;
+				padding: 7px 9px;
+			}
+
+		</style>
+	</head>
+	<body>
+		
+		
+		<div class="container">
+				<h1>IndicleSync - Options</h1>
+				<div class="row">
+					<div class="form span4">
+						<h2 class="form-heading">Login</h2>
+						<form id="loginForm" action="#">
+							<input id="loginEmail" type="text" class="input-block-level" placeholder="Email address">
+							<input id="loginPassword" type="password" class="input-block-level" placeholder="Password">
+							<label class="checkbox">
+								<input type="checkbox" value="remember-me"> Remember me
+							</label>
+							<button class="btn btn-large btn-primary" type="submit">Login</button>
+						</form>
+					</div>
+					<div class="form span4">
+						<h2 class="form-heading">Create Account</h2>
+						<form id="createForm" action="#">
+							<input id="createEmail" type="text" class="input-block-level" placeholder="Email address">
+							<input id="createPassword" type="password" class="input-block-level" placeholder="Password">
+							<input id="createConfirmPassword" type="password" class="input-block-level" placeholder="Confirm Password">
+
+							<button class="btn btn-large btn-primary" type="submit">Create</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type='text/javascript' src="plugins/jquery/jquery-1.9.1.min.js"></script>
+		<script type='text/javascript' src="plugins/bootstrap/js/bootstrap.js"></script>
+		<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+		<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-auth-client.js'></script>
+		<script type='text/javascript' src="js/options.js"></script>
+</script>
+	</body>
+</html>
