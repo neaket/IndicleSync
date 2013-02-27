@@ -2,42 +2,22 @@ var indicleSync = indicleSync || {};
 
 var mainRef = new Firebase("http://indiclesync.firebaseIO.com/");	
 
-var authClient = new FirebaseAuthClient(mainRef, function(error, user) {
-	if (error) {
-		alert ("An Error Occured: " + error);
-	} else if (user) {
-		console.log ("User [ID: '" + user.id + "', Email: '"  + user.email +"'] logged in.");
-	} else {
-		console.log ("User is logged out.");
-	}
-});
 
-indicleSync.createUser = function() {
-	var email = $('#createEmail').val();
-	var password = $('#createPassword').val();
-	authClient.createUser(email, password, function(error, user) {
+window.addEventListener("message", function(event) {
+    // We only accept messages from ourselves
+    if (event.origin != "http://neaket.github.com")
+      return;
+
+    if (event.data.type && (event.data.type == "INDICLE_SYNC_LOGIN_AUTH")) {
+      console.log("Extension: Auth received: " + event.data.auth);
+      mainRef.auth(event.data.auth, function(error, result) {
 		if (error) {
-			alert ("An Error Occured: " + error);	
+			alert (error);
+		} else if (result) {
+			console.log ("Extension: User [ID: '" + result.auth.id + "', Email: '"  + result.auth.email +"'] logged in.");
 		} else {
-			console.log ("User [ID: '" + user.id + "', Email: '"  + user.email +"'] was created.");	
+			console.log ("Extension: User is logged out.");
 		}
-	});
-};
-
-indicleSync.login = function() {	
-	authClient.login('password', {
-		email: $('#loginEmail').val(),
-		password: $('#loginPassword').val()
-	});
-};
-
-indicleSync.logout = function() {
-	authClient.logout();
-};	 
-
-$(document).ready(function() {
-	$('#loginForm').submit(indicleSync.login);
-	$('#createForm').submit(indicleSync.createUser);
-});
-
-
+     });
+    }
+}, false);
