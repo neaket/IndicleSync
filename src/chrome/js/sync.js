@@ -1,11 +1,45 @@
-(function() {
-document.addEventListener('DOMContentLoaded', function () {
-	console.log("loaded");
-	chrome.tabs.getSelected(function(tab) {
-		var testRef = new Firebase("https://indiclesync.firebaseIO.com/test");
-		testRef.set(tab.url);
-	});
-}, false);
+define(["account"], function(account) {
 
-	
-}());
+	var self = {};
+
+	self.syncUrl = function(description, url, callback) {
+		if (account.authKey === null) {
+			alert("You must log in, using the options page.");
+			return;
+		}
+
+		var usersRef = new Firebase("https://indiclesync.firebaseIO.com/users/");
+		var myRef = null;
+		usersRef.auth(account.authKey, function(error, result) {
+			if (error) {
+				alert (error);
+			} else if (result) {
+				console.log ("Extension: User [ID: '" + result.auth.id + "', Email: '"  + result.auth.email +"'] logged in.");
+				myRef = usersRef.child(result.auth.id);
+				authCallback();
+			} else {
+				console.log ("Extension: User is logged out.");
+			}
+		});
+
+		function authCallback() {
+			var urlRef = myRef.child("urls");
+
+			var created = new Date().getTime();
+			var data = {
+				"description": description,
+				"url": url,
+				"created": created
+			};
+
+			// push the data to the server, prioritized by the created time
+			urlRef.push().setWithPriority(data, created);
+
+			callback();
+		}
+
+
+	};
+
+	return self;
+});

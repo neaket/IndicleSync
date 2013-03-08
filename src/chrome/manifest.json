@@ -4,7 +4,8 @@
 	"description": "This extension allows you to sync link's with multiple devices",
 	"version": "0.1",
 	"permissions": [
-		"tabs"
+		"tabs",
+		"storage"		
 	],
 	"content_security_policy": "script-src 'self' https://cdn.firebase.com https://auth.firebase.com https://*.firebaseIO.com; object-src 'self'",
 	"options_page": "options.html",
