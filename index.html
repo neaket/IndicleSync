@@ -61,6 +61,14 @@
 			</div>
 		</div>
 
+		<script type="text/javascript">
+			// console noop functions for browsers that do not have console
+			if (typeof console === "undefined") {
+				var noop = function(){};
+				console = { log: noop, warning: noop, error: noop};				
+			}
+		</script>
+
 		<script type='text/javascript' src="plugins/jquery/jquery-1.9.1.min.js"></script>
 		<script type='text/javascript' src="plugins/bootstrap/js/bootstrap.js"></script>
 		<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
