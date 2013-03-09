@@ -1,8 +1,12 @@
-define(function() {
+define(["messenger"], function(messenger) {
 	var self = {};
+
+	self.USER_CHANGED = "ACCOUNT_USER_CHANGED";
+
 	var authClient = null;
 	self.isLoggedIn = false;
 	self.authKey = null;
+	self.email = null;
 
 
 	self.init = function(callback) {
@@ -15,11 +19,15 @@ define(function() {
 			} else if (user) {
 				self.isLoggedIn = true;
 				console.log ("User [ID: '" + user.id + "', Email: '"  + user.email +"'] logged in.");
+				self.email = user.email;
 				self.authKey = user.firebaseAuthToken;
 			} else {
 				self.isLoggedIn = false;
+				self.authKey = null;
+				self.email = null;
 				console.log ("User is logged out.");
 			}
+			messenger.send(self.USER_CHANGED);
 		});
 
 		callback();

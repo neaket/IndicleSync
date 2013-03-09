@@ -1,23 +1,26 @@
-require(["loader", "account", "sync"], function(loader, account, sync) {
+require(["loader", "messenger", "account", "sync"], function(loader, messenger, account, sync) {
 
 	loader.ready(function() {
-		if (account.isLoggedIn) {
-			$("#loginLink").hide();
-			$("#welcomeUsernameContainer").show();
-			$("#logoutLink").show();			
-		} else {
-			$("#loginLink").show();
-			$("#welcomeUsernameContainer").hide();
-			$("#logoutLink").hide();
-		}
+		messenger.subscribe(account.USER_CHANGED, function() {
+			if (account.isLoggedIn) {
+				$("#notLoggedInContainer").hide();
+				$("#loggedInContainer").show();
 
-		setTimeout(function() {
-			sync.loadUrls(handleUrlListRef);
-		}, 2000);
+				$("#welcomeUsername").text(account.email);
+				sync.loadUrls(handleUrlListRef);
+			} else {
+				$("#urlTable > tbody:first").empty();
+				$("#notLoggedInContainer").show();
+				$("#loggedInContainer").hide();
+			}
+		});
 
 		$(document).ready(function() {
 			$("#loginBtn").click(login);
+			$("#logoutLink").click(logout);
 		});
+
+
 	});
 
 	function handleUrlListRef(urlListRef) {
@@ -36,6 +39,11 @@ require(["loader", "account", "sync"], function(loader, account, sync) {
 		account.login(email, password);
 
 		$('#loginModal').modal('hide');
-	};
+	}
 
+	function logout(e) {
+		e.preventDefault();
+
+		account.logout();
+	}
 });

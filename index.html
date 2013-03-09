@@ -9,12 +9,17 @@
 		<div class="container">
 			<div class="row">
 				<div id="userPanel" class="text-right">
-					<a id="loginLink" href="#loginModal" role="button" data-toggle="modal">Login</a>
-					<span id="welcomeUsernameContainer">
+					<span id="notLoggedInContainer">
+						<a id="loginLink" href="#loginModal" role="button" data-toggle="modal">Login</a>
+						|
+						<a id="createAccountLink" href="#createAccountModal" role="button" data-toggle="modal">Create Account</a>
+					</span>
+					<span id="loggedInContainer" style="display:none;">
 						Welcome 
 						<strong id="welcomeUsername">[Placeholder]</strong>
+						|
+						<a id="logoutLink" href="#">Logout</a>
 					</span>
-					<a id="logoutLink" href="#">Logout</a>
 				</div>
 			</div>
 			<div class="row">
@@ -28,11 +33,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						
-						<tr>
-							<td>Blah Blah A link Description</td>
-							<td><a href="http://indicle.com">Indicle</a></td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -67,7 +67,7 @@
 		<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-auth-client.js'></script>
 		<script>
 			var require = {
-				urlArgs: "bust=" + "3"
+				urlArgs: "bust=" + "4"
 			};
 		</script>
 		<script type='text/javascript' data-main='js/index' src='plugins/requirejs/require.js'></script>
