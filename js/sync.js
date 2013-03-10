@@ -14,11 +14,11 @@ define(["account"], function(account) {
 			if (error) {
 				alert (error);
 			} else if (result) {
-				console.log ("Extension: User [ID: '" + result.auth.id + "', Email: '"  + result.auth.email +"'] logged in.");
+				console.log ("Sync: User [ID: '" + result.auth.id + "', Email: '"  + result.auth.email +"'] logged in.");
 				myRef = usersRef.child(result.auth.id);
 				authCallback();
 			} else {
-				console.log ("Extension: User is logged out.");
+				console.log ("Sync: User is logged out.");
 			}
 		});
 
@@ -51,11 +51,11 @@ define(["account"], function(account) {
 			if (error) {
 				alert (error);
 			} else if (result) {
-				console.log ("Extension: User [ID: '" + result.auth.id + "', Email: '"  + result.auth.email +"'] logged in.");
+				console.log ("Sync: User [ID: '" + result.auth.id + "', Email: '"  + result.auth.email +"'] logged in.");
 				myRef = usersRef.child(result.auth.id);
 				authCallback();
 			} else {
-				console.log ("Extension: User is logged out.");
+				console.log ("Sync: User is logged out.");
 			}
 		});
 

@@ -1,8 +1,10 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 	<head>
 		<title>IndicleSync</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="plugins/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 	</head>
 	<body>
 		
@@ -18,6 +20,8 @@
 						Welcome 
 						<strong id="welcomeUsername">[Placeholder]</strong>
 						|
+						<a id="addLinkLink" href="#addLinkModal" role="button" data-toggle="modal">Add a Link</a>
+						|
 						<a id="logoutLink" href="#">Logout</a>
 					</span>
 				</div>
@@ -26,14 +30,15 @@
 
 				<h1 style="text-align:center;">IndicleSync</h1>
 				<table id="urlTable" class="table table-striped table-hover">
+					<col style="width:50%">
+					<col style="width:50%">
 					<thead>
 						<tr>
 							<th>Description</th>
 							<th>Link</th>
 						</tr>
 					</thead>
-					<tbody>
-					</tbody>
+					<tbody />
 				</table>
 			</div>
 		</div>
@@ -42,22 +47,57 @@
 		<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3 id="myModalLabel">Login</h3>
+				<h3>Login</h3>
 			</div>
 			<div class="modal-body">
-				<div class="form" id="loginContainer">
-					<form id="loginForm" action="#">
-						<input id="loginEmail" type="text" class="input-block-level" placeholder="Email address">
-						<input id="loginPassword" type="password" class="input-block-level" placeholder="Password">
-						<label class="checkbox">
-							<input type="checkbox" value="remember-me"> Remember me
-						</label>
-					</form>
+				<div class="form">
+					<input id="loginEmail" type="email" class="input-block-level" placeholder="Email address" aria-hidden="true">
+					<input id="loginPassword" type="password" class="input-block-level" placeholder="Password" aria-hidden="true">
+					<!--<label class="checkbox">
+						<input type="checkbox" value="remember-me"> Remember me
+					</label> -->
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-				<button id="loginBtn" class="btn btn-primary">Login</button>
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+				<button id="loginBtn" class="btn btn-primary" aria-hidden="true">Login</button>
+			</div>
+		</div>
+
+		<!-- Create Account Modal -->
+		<div id="createAccountModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3>Create Account</h3>
+			</div>
+			<div class="modal-body">
+				<div class="form">
+					<input id="createEmail" type="email" class="input-block-level" placeholder="Email address" aria-hidden="true">
+					<input id="createPassword" type="password" class="input-block-level" placeholder="Password" aria-hidden="true">
+					<input id="createConfirmPassword" type="password" class="input-block-level" placeholder="Confirm Password" aria-hidden="true">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+				<button id="createAccountBtn" class="btn btn-primary" aria-hidden="true">Create</button>
+			</div>
+		</div>
+
+		<!-- Add Link Modal -->
+		<div id="addLinkModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3>Add a Link</h3>
+			</div>
+			<div class="modal-body">
+				<div class="form">
+					<input id="linkDescription" type="text" class="input-block-level" placeholder="Description" aria-hidden="true">
+					<input id="linkUrl" type="text" class="input-block-level" placeholder="URL" aria-hidden="true">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+				<button id="addLinkBtn" class="btn btn-primary" aria-hidden="true">Add</button>
 			</div>
 		</div>
 
@@ -75,7 +115,7 @@
 		<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-auth-client.js'></script>
 		<script>
 			var require = {
-				urlArgs: "bust=" + "4"
+				urlArgs: "bust=" + "5"
 			};
 		</script>
 		<script type='text/javascript' data-main='js/index' src='plugins/requirejs/require.js'></script>
