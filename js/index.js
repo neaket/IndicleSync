@@ -29,7 +29,20 @@ require(["loader", "messenger", "account", "sync"], function(loader, messenger, 
 		urlListRef.on('child_added', function(snapshot) {
 			var urlData = snapshot.val();
 
-			$("#urlTable > tbody:first").prepend('<tr><td style="word-break:break-word;">' + urlData.description + '</td><td style="word-break:break-word;"><a href="' + urlData.url + '">' + urlData.url + '</a></td></tr>');
+			var row = $('<tr></tr>');
+			var description = $('<td style="word-break:break-word;">' + urlData.description + '</td>');
+			row.append(description);
+
+			var link = null;
+			if (typeof blackberry !== "undefined") { // playbook specific
+				link = $('<td style="word-break:break-word;"><a href="#">' + urlData.url + '</a></td>');
+				link.click(playbookClickCallback(urlData.url));
+			} else {
+				link = $('<td style="word-break:break-word;"><a href="' + urlData.url + '">' + urlData.url + '</a></td>');
+			}
+			row.append(link);
+
+			$("#urlTable > tbody:first").prepend(row);
 		});
 	}
 
@@ -78,5 +91,14 @@ require(["loader", "messenger", "account", "sync"], function(loader, messenger, 
 		sync.syncUrl(description, url, function() {
 			$("#addLinkModal").modal('hide');
 		});
+	}
+
+	function playbookClickCallback(url) {
+		return function(e) {
+			e.preventDefault();
+
+			var args = new blackberry.invoke.BrowserArguments(url);
+			blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
+		};
 	}
 });
