@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
+        version="2.0.0.0">
+ 
+  <author href="http://www.example.com/"
+          rim:copyright="Copyright 2013 Nick Eaket">Nick Eaket</author>
+ 
+  <name>IndicleSync</name>
+ 
+  <description>
+    A simple way to share links amongst your devices.
+  </description>
+ 
+  <rim:orientation mode="auto"/>
+  <icon src="icon-86.png" />
+ 
+ <!--
+  <rim:loadingScreen backgroundImage="background.png"
+                     foregroundImage="foreground.gif"
+                     onLocalPageLoad="true">
+    <rim:transitionEffect type="zoomIn"/>
+  </rim:loadingScreen>-->
+ 
+  <rim:permissions>
+  </rim:permissions>
+ 
+  <icon src="icons/example.png"/>
+ 
+ <content src="http://nick-think-8/IndicleSyncGHPages/index.html"/>
+  <!--<content src="http://neaket.github.com/IndicleSync/index.html"/> -->
+  
+  <feature id="blackberry.ui.dialog"/>
+ 
+ <access uri="http://nick-think-8" subdomains="false">
+  <!--<access uri="http://neaket.github.com/" subdomains="false"> -->
+    <feature id="blackberry.app.event"/>
+    <feature id="blackberry.invoke"/>
+    <feature id="blackberry.invoke.BrowserArguments" />
+    <feature id="blackberry.identity" />
+  </access>
+  <access uri="http://firebase.com/" subdomains="true">
+    <feature id="blackberry.app.event"/>
+    <feature id="blackberry.invoke"/>
+  </access>  
+</widget>
