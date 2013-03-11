@@ -10,7 +10,7 @@
 	"content_security_policy": "script-src 'self' https://cdn.firebase.com https://auth.firebase.com https://*.firebaseIO.com; object-src 'self'",
 	"options_page": "options.html",
 	"browser_action": {
-		"default_icon": "icon.png",
+		"default_icon": "icon_dev_19.png",
 		"default_popup": "popup.html"
 	}
 }

@@ -3,7 +3,7 @@
         xmlns:rim="http://www.blackberry.com/ns/widgets"
         version="2.0.0.0">
  
-  <author href="http://www.example.com/"
+  <author href="http://sync.indicle.com"
           rim:copyright="Copyright 2013 Nick Eaket">Nick Eaket</author>
  
   <name>IndicleSync</name>
@@ -11,6 +11,10 @@
   <description>
     A simple way to share links amongst your devices.
   </description>
+
+  <rim:loadingScreen
+    foregroundImage="icon-600.png"
+    onFirstLaunch="true" />
  
   <rim:orientation mode="auto"/>
   <icon src="icon-86.png" />
@@ -27,12 +31,12 @@
  
   <icon src="icons/example.png"/>
  
- <content src="http://nick-think-8/IndicleSyncGHPages/index.html"/>
+ <content src="http://sync.indicle.com/index.html"/>
   <!--<content src="http://neaket.github.com/IndicleSync/index.html"/> -->
   
   <feature id="blackberry.ui.dialog"/>
  
- <access uri="http://nick-think-8" subdomains="false">
+ <access uri="http://sync.indicle.com" subdomains="false">
   <!--<access uri="http://neaket.github.com/" subdomains="false"> -->
     <feature id="blackberry.app.event"/>
     <feature id="blackberry.invoke"/>
