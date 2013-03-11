@@ -34,7 +34,7 @@ require(["loader", "messenger", "account", "sync"], function(loader, messenger, 
 			row.append(description);
 
 			var link = null;
-			if (typeof blackberry !== "undefined") { // playbook specific
+			if (typeof blackberry !== "undefined") { // BlackBerry PlayBook specific
 				link = $('<td style="word-break:break-word;"><a href="#">' + urlData.url + '</a></td>');
 				link.click(playbookClickCallback(urlData.url));
 			} else {
@@ -79,7 +79,7 @@ require(["loader", "messenger", "account", "sync"], function(loader, messenger, 
 		}
 
 		account.createUser(email, password);
-		$('#createModal').modal('hide');
+		$('#createAccountModal').modal('hide');
 	}
 
 	function addLink(e) {

@@ -39,6 +39,7 @@ define(["messenger"], function(messenger) {
 				alert (error);
 			} else {
 				console.log ("User [ID: '" + user.id + "', Email: '"  + user.email +"'] was created.");
+				self.login(email, password);
 			}
 		});
 	};

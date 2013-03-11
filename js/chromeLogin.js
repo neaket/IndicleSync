@@ -1,65 +1,51 @@
-var indicleSync = indicleSync || {};
+require(["loader", "messenger", "account"], function(loader, messenger, account) {
 
-indicleSync.toggleForm = function(showLogin) {
-	if (showLogin) {
-		$('#loginContainer').show();
-		$('#createContainer').show();
-		$('#logoutContainer').hide();
-	} else {
-		$('#loginContainer').hide();
-		$('#createContainer').hide();
-		$('#logoutContainer').show();
-	}
-}
+	var createUser = function(e) {
+		e.preventDefault();
 
-var mainRef = new Firebase("http://indiclesync.firebaseIO.com/");	
+		var email = $('#createEmail').val();
+		var password = $('#createPassword').val();
+		account.createUser(email, password);
+		$('#createAccountModal').modal('hide');
+	};
 
-var authClient = new FirebaseAuthClient(mainRef, function(error, user) {
-	if (error) {
-		indicleSync.toggleForm(true);
-		alert (error);
-	} else if (user) {
-		indicleSync.toggleForm(false);
-		console.log ("User [ID: '" + user.id + "', Email: '"  + user.email +"'] logged in.");
-		top.postMessage({type: "INDICLE_SYNC_LOGIN_AUTH", auth: user.firebaseAuthToken}, "*");
-	} else {
-		indicleSync.toggleForm(true);
-		console.log ("User is logged out.");
-		top.postMessage({type: "INDICLE_SYNC_LOGOUT"}, "*");
-	}
-});
+	var login = function(e) {
+		e.preventDefault();
 
+		var email = $('#loginEmail').val();
+		var password = $('#loginPassword').val();
+		account.login(email, password);
+		$('#loginModal').modal('hide');
+	};
 
+	var logout = function(e) {
+		e.preventDefault();
+		account.logout();
+	};
 
-indicleSync.createUser = function(e) {
-	e.preventDefault();
-	var email = $('#createEmail').val();
-	var password = $('#createPassword').val();
-	authClient.createUser(email, password, function(error, user) {
-		if (error) {
-			alert (error);	
-		} else {
-			console.log ("User [ID: '" + user.id + "', Email: '"  + user.email +"'] was created.");	
-		}
+	loader.ready(function() {
+		messenger.subscribe(account.USER_CHANGED, function() {
+			if (account.isLoggedIn) {
+				$("#notLoggedInContainer").hide();
+				$("#loggedInContainer").show();
+
+				$("#welcomeUsername").text(account.email);
+
+				top.postMessage({type: "INDICLE_SYNC_LOGIN_AUTH", auth: account.authKey}, "*");
+			} else {
+				$("#urlTable > tbody:first").empty();
+				$("#notLoggedInContainer").show();
+				$("#loggedInContainer").hide();
+
+				top.postMessage({type: "INDICLE_SYNC_LOGIN_AUTH", auth: account.authKey}, "*");
+			}
+		});
+
+		$(document).ready(function() {
+			$('#loginBtn').click(login);
+			$('#createAccountBtn').click(createUser);
+			$('#logoutLink').click(logout);
+		});
 	});
-};
 
-indicleSync.login = function(e) {	
-	e.preventDefault();
-	authClient.login('password', {
-		email: $('#loginEmail').val(),
-		password: $('#loginPassword').val()
-	});
-};
-
-indicleSync.logout = function(e) {
-	e.preventDefault();
-	authClient.logout();	
-};	 
-
-$(document).ready(function() {
-	$('#loginForm').submit(indicleSync.login);
-	$('#createForm').submit(indicleSync.createUser);
-	$('#logoutForm').submit(indicleSync.logout);
 });
-
