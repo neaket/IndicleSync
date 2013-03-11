@@ -4,8 +4,8 @@ require(["loader", "account"], function(loader, account) {
 	loader.ready(function() {
 		window.addEventListener("message", function(event) {
 			// Only accept messages from the web sign on frame
-			//if (event.origin != "http://neaket.github.com")
-			//	return;
+			if (event.origin != "http://sync.indicle.com")
+				return;
 
 			if (event.data.type) {
 				if (event.data.type == "INDICLE_SYNC_LOGIN_AUTH") {
