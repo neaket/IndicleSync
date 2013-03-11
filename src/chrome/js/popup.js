@@ -1,6 +1,6 @@
 define(["loader", "sync"], function(loader, sync) {
 	
-	loader.init(function() {
+	loader.ready(function() {
 		$(document).ready(function () {
 			chrome.tabs.getSelected(function(tab) {
 				sync.syncUrl(tab.title, tab.url, syncedCallback);

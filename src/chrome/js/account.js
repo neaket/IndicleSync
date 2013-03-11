@@ -11,7 +11,6 @@ define(function() {
 
 	self.saveAuth = function(authKey) {
 		chrome.storage.sync.set({'authKey': authKey}, function() {
-			console.log("authKey: " + authKey);
 		});
 	};
 
