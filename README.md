@@ -11,6 +11,12 @@ A simple way to share links amongst all of your devices.
 6. Click your synced Link
 7. Repeat step 3 and step 6 as much as necessary
 
+##Chrome Extension
+https://chrome.google.com/webstore/detail/indiclesync/nkdelcdkjjnnbgbjaljmjkgoahfecjmf?hl=en-GB
+
+##Note
+Website source is on the gh-pages branch
+https://github.com/neaket/IndicleSync/tree/gh-pages
 
 ##In Development
 - Chrome Extension
