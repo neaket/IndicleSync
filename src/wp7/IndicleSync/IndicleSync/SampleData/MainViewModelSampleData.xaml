@@ -1,0 +1,14 @@
+<IndicleSync_ViewModel:MainViewModel xmlns:IndicleSync_ViewModel="clr-namespace:IndicleSync.ViewModel" xmlns:IndicleSync_Entities="clr-namespace:IndicleSync.Entities" IsInDesignMode="True" IsInDesignModeStatic="False">
+	<IndicleSync_ViewModel:MainViewModel.Links>
+		<IndicleSync_Entities:LinkEntity description="Nam aliquam sed" url="Curabitur aenean class integer phasellus"/>
+		<IndicleSync_Entities:LinkEntity description="Curae cras donec consequat vestibulum" url="Maecenas mauris"/>
+		<IndicleSync_Entities:LinkEntity description="Nullam dis" url="Aptent adipiscing"/>
+		<IndicleSync_Entities:LinkEntity description="Parturient etiam convallis vestibulum dignissim" url="Duis fusce quisque"/>
+		<IndicleSync_Entities:LinkEntity description="Lorem praesent" url="Accumsan elementum est"/>
+		<IndicleSync_Entities:LinkEntity description="Nunc vivamus vestibulum facilisis bibendum" url="Auctor congue aliquam fermentum amet"/>
+		<IndicleSync_Entities:LinkEntity description="Aliquet cursus morbi ante" url="Blandit commodo fringilla dictum dictumst"/>
+		<IndicleSync_Entities:LinkEntity description="Habitasse adipiscing arcu diam" url="Eget conubia nulla eleifend"/>
+		<IndicleSync_Entities:LinkEntity description="Hac hendrerit proin elit" url="Cubilia lectus"/>
+		<IndicleSync_Entities:LinkEntity description="Augue facilisi dolor himenaeos" url="Faucibus habitant inceptos parturient libero"/>
+	</IndicleSync_ViewModel:MainViewModel.Links>
+</IndicleSync_ViewModel:MainViewModel>

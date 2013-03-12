@@ -12,6 +12,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True"
+	d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}"
     DataContext="{Binding Main, Source={StaticResource Locator}}">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -29,12 +30,12 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox ItemsSource="{Binding Links}" >
+            <ListBox ItemsSource="{Binding Links}" SelectedValue="{Binding SelectedLink, Mode=TwoWay}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
+                        <StackPanel Margin="10">
                             <TextBlock Text="{Binding description}" />
-                            <TextBlock Text="{Binding url}" />
+                            <TextBlock Text="{Binding url}" TextDecorations="Underline" Foreground="{StaticResource PhoneAccentBrush}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

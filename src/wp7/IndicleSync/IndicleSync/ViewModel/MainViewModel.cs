@@ -8,6 +8,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using IndicleSync.Communication;
 using IndicleSync.Entities;
+using Microsoft.Phone.Tasks;
 using MyToolkit.Networking;
 using Newtonsoft.Json;
 
@@ -18,6 +19,22 @@ namespace IndicleSync.ViewModel
         public ICommand RefreshCommand { get; private set; }
         public ObservableCollection<LinkEntity> Links { get; private set; }
 
+        private LinkEntity _selectedLink;
+        public LinkEntity SelectedLink
+        {
+            get { return _selectedLink; }
+            set
+            {
+                _selectedLink = value;
+                if (_selectedLink != null)
+                {
+                    WebBrowserTask browser = new WebBrowserTask();
+                    browser.Uri = new Uri(_selectedLink.url);
+                    browser.Show();
+                } 
+                    
+            }
+        }
 
         public MainViewModel()
         {
