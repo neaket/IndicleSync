@@ -16,3 +16,11 @@ A simple way to share links amongst all of your devices.
 - Chrome Extension
 - BlackBerry PlayBook and BB10 App
 - Android App
+
+
+## WP7 App - Coming Soon
+![screenshot](http://sync.indicle.com/screenshots/LoginScreenshot.png)
+![screenshot](http://sync.indicle.com/screenshots/Links.png)
+
+
+
