@@ -30,3 +30,7 @@ https://github.com/neaket/IndicleSync/tree/gh-pages
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/neaket/IndicleSync/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
